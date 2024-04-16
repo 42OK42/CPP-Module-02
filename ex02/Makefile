@@ -6,60 +6,59 @@
 #    By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 13:51:17 by okrahl            #+#    #+#              #
-#    Updated: 2024/04/16 18:01:04 by okrahl           ###   ########.fr        #
+#    Updated: 2024/04/16 18:35:52 by okrahl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Define the compiler
-CXX = c++
 
-# Define any compile-time flags
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+# COLORS FOR PRINTING
+GREEN = \033[0;32m
+RESET = \033[0m
 
-# Define any directories containing header files
-INCLUDES =
+# DIRECTORIES
+OBJ_DIR = obj
+SRC_DIR = src
 
-# Define any libraries to link into executable
-LIBS =
+# EXECUTABLE NAME
+NAME = talking
 
-# Define the source files
-SRCS =	main.cpp \
-		Fixed.cpp \
+# SOURCE FILES
+SRCS =	main.cpp\
+		Fixed.cpp\
 
-# Define the object files
-OBJS = $(SRCS:.cpp=.o)
+# OBJECT FILES
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
-# Define the dependency files
-DEPS = $(SRCS:.cpp=.d)
+# COMPILER
+CC = c++
 
-# Define the executable file
-MAIN = talking
+# COMPILATION FLAGS
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-.PHONY: all clean fclean re
+# COMMANDS
+RM = rm -f
+MKDIR = mkdir -p
 
-# The default rule - build the main target
-all: $(MAIN)
+# DIRECTORIES
+INCL_DIR = incl
 
-# Rule to link the program - only runs if an object file is newer than the executable
-$(MAIN): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LIBS)
-	@echo talking has been compiled
+# RULES
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@$(MKDIR) $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -I $(INCL_DIR) -c $< -o $@
 
-# Rule to compile the source files into object files
-.cpp.o:
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+all : $(NAME)
 
-# Rule to clean the workspace
-clean:
-	$(RM) *.o *~ $(DEPS)
+$(NAME) : $(OBJS)
+	@$(CC) $(CFLAGS) -I $(INCL_DIR) $^ -o $(NAME)
+	@echo "$(GREEN)./$(NAME) is ready!$(RESET)"
 
-# Rule to fully clean the workspace (including the executable)
-fclean: clean
-	$(RM) $(MAIN)
+fclean : clean
+	@$(RM) $(NAME)
 
-# Rule to re-make everything
-re: fclean all
+clean :
+	@$(RM) -r $(OBJ_DIR)
 
-# Rule to generate a file of dependencies (uses the -MM GCC flag)
-%.d: %..cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -MM $< > $@
+re : fclean all
+
+.PHONY : all clean fclean re

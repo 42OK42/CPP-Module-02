@@ -6,11 +6,11 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:11:22 by okrahl            #+#    #+#             */
-/*   Updated: 2024/04/16 18:11:44 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/04/16 18:34:36 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "../includes/Fixed.hpp"
 
 int main(void)
 {
