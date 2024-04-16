@@ -6,7 +6,7 @@
 #    By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 13:51:17 by okrahl            #+#    #+#              #
-#    Updated: 2024/04/16 18:01:04 by okrahl           ###   ########.fr        #
+#    Updated: 2024/04/12 14:50:27 by okrahl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 
 # Define the executable file
-MAIN = talking
+MAIN = fixed
 
 .PHONY: all clean fclean re
 
@@ -43,7 +43,7 @@ all: $(MAIN)
 # Rule to link the program - only runs if an object file is newer than the executable
 $(MAIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LIBS)
-	@echo talking has been compiled
+	@echo fixed has been compiled
 
 # Rule to compile the source files into object files
 .cpp.o:
