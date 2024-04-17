@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:37:01 by okrahl            #+#    #+#             */
-/*   Updated: 2024/04/16 18:42:16 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/04/17 15:55:25 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ public:
 	// Conversion functions
 	float toFloat(void) const; // Converts fixed-point value to float
 	int toInt(void) const; // Converts fixed-point value to int
+	double toDouble(void) const;
 
 	// Member functions to get and set the raw value
 	int getRawBits(void) const; // Retrieves the raw fixed-point value
