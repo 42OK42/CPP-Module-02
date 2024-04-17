@@ -10,56 +10,54 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Define the compiler
-CXX = c++
+# COLORS FOR PRINTING
+GREEN = \033[0;32m
+RESET = \033[0m
 
-# Define any compile-time flags
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+# DIRECTORIES
+OBJ_DIR = obj
+SRC_DIR = src
 
-# Define any directories containing header files
-INCLUDES =
+# EXECUTABLE NAME
+NAME = fixed
 
-# Define any libraries to link into executable
-LIBS =
+# SOURCE FILES
+SRCS =	main.cpp\
+		Fixed.cpp\
 
-# Define the source files
-SRCS =	main.cpp \
-		Fixed.cpp \
+# OBJECT FILES
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
-# Define the object files
-OBJS = $(SRCS:.cpp=.o)
+# COMPILER
+CC = c++
 
-# Define the dependency files
-DEPS = $(SRCS:.cpp=.d)
+# COMPILATION FLAGS
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-# Define the executable file
-MAIN = fixed
+# COMMANDS
+RM = rm -f
+MKDIR = mkdir -p
 
-.PHONY: all clean fclean re
+# DIRECTORIES
+INCL_DIR = incl
 
-# The default rule - build the main target
-all: $(MAIN)
+# RULES
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@$(MKDIR) $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -I $(INCL_DIR) -c $< -o $@
 
-# Rule to link the program - only runs if an object file is newer than the executable
-$(MAIN): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LIBS)
-	@echo fixed has been compiled
+all : $(NAME)
 
-# Rule to compile the source files into object files
-.cpp.o:
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+$(NAME) : $(OBJS)
+	@$(CC) $(CFLAGS) -I $(INCL_DIR) $^ -o $(NAME)
+	@echo "$(GREEN)./$(NAME) is ready!$(RESET)"
 
-# Rule to clean the workspace
-clean:
-	$(RM) *.o *~ $(DEPS)
+fclean : clean
+	@$(RM) $(NAME)
 
-# Rule to fully clean the workspace (including the executable)
-fclean: clean
-	$(RM) $(MAIN)
+clean :
+	@$(RM) -r $(OBJ_DIR)
 
-# Rule to re-make everything
-re: fclean all
+re : fclean all
 
-# Rule to generate a file of dependencies (uses the -MM GCC flag)
-%.d: %..cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -MM $< > $@
+.PHONY : all clean fclean re
