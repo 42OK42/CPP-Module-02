@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:11:14 by okrahl            #+#    #+#             */
-/*   Updated: 2024/04/16 15:17:16 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/08/21 16:52:51 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ public:
 	Fixed(const Fixed& other);
 	Fixed(const int int_value);
 	Fixed(const float float_value);
+	Fixed &operator=(const Fixed& other);
 	~Fixed();
-
-	// Operator overload
-	Fixed& operator=(const Fixed& other);
 	
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
@@ -42,6 +40,6 @@ public:
 	float	toFloat( void ) const;
 };
 
-std::ostream& operator<<(std::ostream& os, const Fixed& obj);
+std::ostream	&operator<<(std::ostream& os, const Fixed& obj);
 
 #endif

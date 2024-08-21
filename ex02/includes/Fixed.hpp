@@ -6,11 +6,10 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:37:01 by okrahl            #+#    #+#             */
-/*   Updated: 2024/04/16 18:42:16 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/08/21 19:25:51 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Fixed.hpp
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
@@ -20,15 +19,15 @@
 class Fixed
 {
 private:
-	int					_num; // Stores the fixed-point value
-	static const int	_fracBits = 8; // Number of fractional bits for the fixed-point representation
+	int					_num;
+	static const int	_fracBits = 8;
 
 public:
 	// Constructors
-	Fixed(); // Default constructor
-	Fixed(const int int_value); // Constructs fixed-point value from an integer
-	Fixed(const float float_value); // Constructs fixed-point value from a float
-	Fixed(const Fixed& other); // Copy constructor
+	Fixed();
+	Fixed(const int int_value);
+	Fixed(const float float_value);
+	Fixed(const Fixed& other);
 
 	// Destructor
 	~Fixed();
@@ -51,28 +50,27 @@ public:
 	Fixed operator/(const Fixed& other) const;
 
 	// Increment/Decrement operators
-	Fixed& operator++();    // Pre-increment
-	Fixed operator++(int);  // Post-increment
-	Fixed& operator--();    // Pre-decrement
-	Fixed operator--(int);  // Post-decrement
+	Fixed& operator++();
+	Fixed operator++(int);
+	Fixed& operator--();
+	Fixed operator--(int);
 
 	// Conversion functions
-	float toFloat(void) const; // Converts fixed-point value to float
-	int toInt(void) const; // Converts fixed-point value to int
+	float toFloat(void) const;
+	int toInt(void) const;
 
-	// Member functions to get and set the raw value
-	int getRawBits(void) const; // Retrieves the raw fixed-point value
-	void setRawBits(int const raw); // Sets the raw fixed-point value
+	int getRawBits(void) const;
+	void setRawBits(int const raw);
 
 	// Min/Max functions
-	static	Fixed& min(Fixed &a, Fixed &b); // Returns the smaller of two fixed-point values
-	static const Fixed& min(const Fixed& a, const Fixed& b); // Returns the smaller of two constant fixed-point values
-	static	Fixed& max(Fixed &a, Fixed &b); // Returns the larger of two fixed-point values
-	static const Fixed& max(const Fixed& a, const Fixed& b); // Returns the larger of two constant fixed-point values
+	static	Fixed& min(Fixed &a, Fixed &b);
+	static const Fixed& min(const Fixed& a, const Fixed& b);
+	static	Fixed& max(Fixed &a, Fixed &b);
+	static const Fixed& max(const Fixed& a, const Fixed& b);
 
 };
 
-// Stream insertion operator
-std::ostream& operator<<(std::ostream& os, const Fixed& obj); // Overloads << to output a Fixed object
 
-#endif // FIXED_HPP
+std::ostream& operator<<(std::ostream& os, const Fixed& obj);
+
+#endif

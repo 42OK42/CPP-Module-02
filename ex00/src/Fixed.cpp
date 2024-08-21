@@ -6,18 +6,18 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:11:12 by okrahl            #+#    #+#             */
-/*   Updated: 2024/04/17 16:31:48 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/08/21 16:02:12 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Fixed.hpp"
 
-Fixed::Fixed() : num(0)
+Fixed::Fixed() : _num(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed& other) : num(other.num)
+Fixed::Fixed(const Fixed& other) : _num(other._num)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	this->setRawBits(other.getRawBits());
@@ -38,10 +38,10 @@ Fixed::~Fixed()
 int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (this->num);
+	return (this->_num);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	this->num = raw;
+	this->_num = raw;
 }

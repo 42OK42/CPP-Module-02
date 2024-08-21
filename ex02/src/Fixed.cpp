@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:11:12 by okrahl            #+#    #+#             */
-/*   Updated: 2024/04/16 18:35:00 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/08/21 19:42:09 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ Fixed::Fixed(const Fixed& other) : _num(other._num)
 {
 	//std::cout << "Copy constructor called" << std::endl;
 	this->setRawBits(other.getRawBits());
-	//*this = other;		//also possible
 }
 
 Fixed& Fixed::operator=(const Fixed &other)
@@ -99,28 +98,28 @@ bool Fixed::operator!=(const Fixed& other) const
 	return (this->_num != other._num);
 }
 
-	// Arithmetic operators
+
 Fixed Fixed::operator+(const Fixed& other) const
 {
-	return (this->toFloat() + other.toFloat());
+	return (Fixed(this->toFloat() + other.toFloat()));
 }
 
 Fixed Fixed::operator-(const Fixed& other) const
 {
-	return (this->toFloat() - other.toFloat());
+	return (Fixed(this->toFloat() - other.toFloat()));
 }
 
 Fixed Fixed::operator*(const Fixed& other) const
 {
-	return (this->toFloat() * other.toFloat());
+	return (Fixed(this->toFloat() * other.toFloat()));
 }
 
 Fixed Fixed::operator/(const Fixed& other) const
 {
-	return (this->toFloat() / other.toFloat());
+	return (Fixed(this->toFloat() / other.toFloat()));
 }
 
-// Increment/Decrement operators
+
 Fixed& Fixed::operator++()
 {
 	++(this->_num);
@@ -149,7 +148,7 @@ Fixed Fixed::operator--(int)
 	return(tmp);
 }
 
-// Min/Max functions
+
 Fixed& Fixed::min(Fixed &a, Fixed &b)
 {
 	if (a.getRawBits() > b.getRawBits())
@@ -158,7 +157,7 @@ Fixed& Fixed::min(Fixed &a, Fixed &b)
 		return (a);
 }
 
-const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
+const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
 {
 	if (a.getRawBits() > b.getRawBits())
 		return ((Fixed&)b);
@@ -174,7 +173,7 @@ Fixed& Fixed::max(Fixed &a, Fixed &b)
 		return (b);
 }
 
-const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
 {
 		if (a.getRawBits() > b.getRawBits())
 		return ((Fixed&)a);

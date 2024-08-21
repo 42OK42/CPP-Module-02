@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:11:12 by okrahl            #+#    #+#             */
-/*   Updated: 2024/04/17 16:28:22 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/08/21 16:15:46 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ Fixed::Fixed(const Fixed& other) : _num(other._num)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	this->setRawBits(other.getRawBits());
-	//*this = other;		//also possible
 }
 
 Fixed& Fixed::operator=(const Fixed &other)
@@ -69,7 +68,8 @@ float Fixed::toFloat( void ) const
 	return (static_cast<float>(this->_num) / (1 << _fracBits));
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
+std::ostream& operator<<(std::ostream& os, const Fixed& obj)
+{
 	os << obj.toFloat();
 	return os;
 }
