@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:03:43 by okrahl            #+#    #+#             */
-/*   Updated: 2024/08/22 13:30:11 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/08/22 13:36:12 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ class Point
 
 		~Point();
 
-		// Getter functions for x and y
 		Fixed getX() const;
 		Fixed getY() const;
 
