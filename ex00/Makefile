@@ -6,7 +6,7 @@
 #    By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 13:51:17 by okrahl            #+#    #+#              #
-#    Updated: 2024/04/17 16:32:07 by okrahl           ###   ########.fr        #
+#    Updated: 2024/08/22 13:39:38 by okrahl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,4 +61,3 @@ clean :
 re : fclean all
 
 .PHONY : all clean fclean re
-

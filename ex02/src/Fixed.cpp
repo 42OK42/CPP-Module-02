@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:11:12 by okrahl            #+#    #+#             */
-/*   Updated: 2024/08/21 19:42:09 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/08/22 13:42:23 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ Fixed& Fixed::max(Fixed &a, Fixed &b)
 
 const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
 {
-		if (a.getRawBits() > b.getRawBits())
+	if (a.getRawBits() > b.getRawBits())
 		return ((Fixed&)a);
 	else
 		return ((Fixed&)b);
