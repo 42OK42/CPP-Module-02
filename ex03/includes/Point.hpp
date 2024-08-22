@@ -6,7 +6,7 @@
 /*   By: okrahl <okrahl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:03:43 by okrahl            #+#    #+#             */
-/*   Updated: 2024/04/16 19:05:04 by okrahl           ###   ########.fr       */
+/*   Updated: 2024/08/22 13:30:11 by okrahl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,29 @@
 class Point
 {
 
-private:
-	Fixed const x;
-	Fixed const y;
+	private:
+		Fixed const x;
+		Fixed const y;
 
-public:
-	// Default constructor that initializes x and y to 0
-	Point();
+	public:
 
-	// Constructor that takes two constant floating-point numbers
-	// and initializes x and y with those parameters
-	Point(const float x, const float y);
+		Point();
 
-	// Copy constructor
-	Point(const Point& other);
+		Point(const float x, const float y);
 
-	// Copy assignment operator overload
-	Point& operator=(const Point& other);
+		Point(const Point& other);
 
-	// Destructor
-	~Point();
+		Point &operator=(const Point& other);
 
-	// Getter functions for x and y
-	Fixed getX() const;
-	Fixed getY() const;
+		~Point();
+
+		// Getter functions for x and y
+		Fixed getX() const;
+		Fixed getY() const;
 
 };
 
-// Non-member function declaration for bsp
 bool bsp(Point const a, Point const b, Point const c, Point const point);
+float calculate_size_triangle(Point const a, Point const b, Point const c);
 
-#endif // POINT_HPP
+#endif
